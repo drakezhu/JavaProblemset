@@ -50,3 +50,16 @@ lerna-debug.log*
 # Package manager
 .npm
 .yarn-integrity
+
+# 微信小程序
+wechat-miniprogram/miniprogram_npm/
+wechat-miniprogram/node_modules/
+wechat-miniprogram/.vscode/
+wechat-miniprogram/.gitignore
+wechat-miniprogram/package-lock.json
+wechat-miniprogram/yarn.lock
+wechat-miniprogram/.eslintrc.js
+wechat-miniprogram/project.config.json
+wechat-miniprogram/project.private.config.json
+wechat-miniprogram/.DS_Store
+wechat-miniprogram/Thumbs.db

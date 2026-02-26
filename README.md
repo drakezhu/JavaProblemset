@@ -16,6 +16,11 @@
 - **Vite** - 现代化前端构建工具
 - **CSS Grid/Flexbox** - 响应式布局
 
+### 微信小程序
+- **微信小程序原生框架** - 基于WXML、WXSS、JavaScript开发
+- **Flexbox/Grid布局** - 响应式页面设计
+- **微信小程序API** - 网络请求、页面跳转等
+
 ## 📦 安装和运行
 
 ### 前提条件
@@ -49,6 +54,14 @@
    ```
    前端服务将在 `http://localhost:5173` 或其他可用端口启动
 
+4. **运行微信小程序**
+   - 打开微信开发者工具
+   - 选择「导入项目」
+   - 填写项目名称和项目目录（指向 `wechat-miniprogram` 文件夹）
+   - 选择AppID（使用测试号或自有AppID）
+   - 点击「导入」
+   - 点击「编译」按钮运行小程序
+
 ## 📁 项目结构
 
 ```
@@ -75,6 +88,21 @@ InterviewPrep/
 │   │   └── main.tsx             # 前端入口
 │   ├── package.json             # 前端依赖配置
 │   └── vite.config.ts           # Vite配置
+├── wechat-miniprogram/           # 微信小程序项目
+│   ├── app.json                  # 小程序全局配置
+│   ├── app.js                    # 小程序入口文件
+│   ├── pages/
+│   │   ├── index/                # 首页（问题列表）
+│   │   │   ├── index.js          # 首页逻辑
+│   │   │   ├── index.wxml        # 首页布局
+│   │   │   └── index.wxss        # 首页样式
+│   │   └── details/              # 详情页（问题详情）
+│   │       ├── details.js        # 详情页逻辑
+│   │       ├── details.wxml      # 详情页布局
+│   │       └── details.wxss      # 详情页样式
+│   ├── images/                   # 图片资源目录
+│   ├── sitemap.json              # 站点地图配置
+│   └── README.md                 # 小程序说明文档
 └── README.md                    # 项目说明文档
 ```
 

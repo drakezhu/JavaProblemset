@@ -1,0 +1,40 @@
+<!-- details.wxml -->
+<view class="container">
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading">
+    <text>加载中...</text>
+  </view>
+  
+  <!-- 错误状态 -->
+  <view wx:elif="{{error}}" class="error">
+    <text>{{error}}</text>
+    <button bindtap="handleBack" class="back-btn">返回</button>
+  </view>
+  
+  <!-- 问题详情 -->
+  <view wx:else>
+    <view wx:if="{{question}}" class="question-detail">
+      <!-- 头部标签 -->
+      <view class="question-header">
+        <view class="category-tag">{{question.category}}</view>
+        <view class="difficulty-tag difficulty-{{question.difficulty}}">
+          {{question.difficulty === 1 ? 'Easy' : question.difficulty === 2 ? 'Medium' : 'Hard'}}
+        </view>
+      </view>
+      
+      <!-- 问题内容 -->
+      <view class="question-content">
+        <text class="question-title">{{question.question}}</text>
+      </view>
+      
+      <!-- 答案内容 -->
+      <view class="answer-section">
+        <text class="answer-title">答案：</text>
+        <text class="answer-content">{{question.answer}}</text>
+      </view>
+      
+      <!-- 返回按钮 -->
+      <button bindtap="handleBack" class="back-btn">返回列表</button>
+    </view>
+  </view>
+</view>

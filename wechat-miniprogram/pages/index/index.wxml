@@ -1,0 +1,112 @@
+<!-- index.wxml -->
+<view class="container">
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading">
+    <text>加载中...</text>
+  </view>
+  
+  <!-- 错误状态 -->
+  <view wx:elif="{{error}}" class="error">
+    <text>{{error}}</text>
+  </view>
+  
+  <!-- 主内容 -->
+  <view wx:else class="main-content">
+    <!-- 筛选区域 -->
+    <view class="filters">
+      <!-- 类别筛选 -->
+      <view class="filter-section">
+        <text class="filter-title">类别</text>
+        <view class="filter-tags">
+          <view 
+            wx:for="{{categories}}" 
+            wx:key="{{index}}"
+            class="filter-tag {{selectedCategory === item ? 'active' : ''}}"
+            data-category="{{item}}"
+            bindtap="handleCategoryChange"
+          >
+            {{item}}
+          </view>
+        </view>
+      </view>
+      
+      <!-- 难度筛选 -->
+      <view class="filter-section">
+        <text class="filter-title">难度</text>
+        <view class="filter-tags">
+          <view class="filter-tag {{selectedDifficulty === 1 ? 'active' : ''}}" data-difficulty="1" bindtap="handleDifficultyChange">
+            Easy
+          </view>
+          <view class="filter-tag {{selectedDifficulty === 2 ? 'active' : ''}}" data-difficulty="2" bindtap="handleDifficultyChange">
+            Medium
+          </view>
+          <view class="filter-tag {{selectedDifficulty === 3 ? 'active' : ''}}" data-difficulty="3" bindtap="handleDifficultyChange">
+            Hard
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 问题列表头部 -->
+    <view class="questions-header">
+      <text class="questions-count">问题 ({{filteredQuestions.length}})</text>
+      <view class="pagination-controls">
+        <text>每页显示:</text>
+        <picker 
+          range="[6, 9, 12]" 
+          value="{{questionsPerPage === 6 ? 0 : questionsPerPage === 9 ? 1 : 2}}" 
+          bindchange="handleQuestionsPerPageChange"
+          class="questions-per-page-picker"
+        >
+          <text>{{questionsPerPage}}</text>
+        </picker>
+      </view>
+    </view>
+    
+    <!-- 问题列表 -->
+    <view class="questions-list">
+      <view 
+        wx:for="{{currentQuestions}}" 
+        wx:key="{{item.id}}"
+        class="question-card"
+        data-question="{{item}}"
+        bindtap="handleQuestionClick"
+      >
+        <view class="question-header">
+          <view class="category-tag">{{item.category}}</view>
+          <view class="difficulty-tag difficulty-{{item.difficulty}}">
+            {{item.difficulty === 1 ? 'Easy' : item.difficulty === 2 ? 'Medium' : 'Hard'}}
+          </view>
+        </view>
+        <view class="question-title">{{item.question}}</view>
+        <view class="view-details-btn">查看详情</view>
+      </view>
+      
+      <!-- 空状态 -->
+      <view wx:if="{{currentQuestions.length === 0}}" class="empty-state">
+        <text>暂无匹配的问题</text>
+      </view>
+    </view>
+    
+    <!-- 分页控件 -->
+    <view wx:if="{{totalPages > 1}}" class="pagination">
+      <view 
+        class="pagination-btn {{currentPage === 1 ? 'disabled' : ''}}"
+        data-type="prev"
+        bindtap="handlePageChange"
+      >
+        上一页
+      </view>
+      <view class="pagination-info">
+        {{currentPage}} / {{totalPages}}
+      </view>
+      <view 
+        class="pagination-btn {{currentPage === totalPages ? 'disabled' : ''}}"
+        data-type="next"
+        bindtap="handlePageChange"
+      >
+        下一页
+      </view>
+    </view>
+  </view>
+</view>

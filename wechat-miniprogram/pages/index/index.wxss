@@ -1,0 +1,263 @@
+/* index.wxss */
+
+/* 全局样式 */
+.container {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 加载和错误状态 */
+.loading,
+.error {
+  text-align: center;
+  padding: 80rpx 0;
+  font-size: 32rpx;
+}
+
+.error {
+  color: #e74c3c;
+}
+
+/* 筛选区域 */
+.filters {
+  background: white;
+  padding: 30rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 30rpx;
+}
+
+.filter-section {
+  margin-bottom: 30rpx;
+}
+
+.filter-section:last-child {
+  margin-bottom: 0;
+}
+
+.filter-title {
+  display: block;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #555;
+  text-align: center;
+  font-weight: 500;
+}
+
+.filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+  justify-content: center;
+}
+
+.filter-tag {
+  padding: 15rpx 25rpx;
+  border: 2rpx solid #667eea;
+  border-radius: 40rpx;
+  background: white;
+  cursor: pointer;
+  font-size: 24rpx;
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.filter-tag.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+/* 问题列表头部 */
+.questions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+  padding: 20rpx;
+  background: white;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.questions-count {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+}
+
+.pagination-controls text {
+  font-size: 24rpx;
+  color: #555;
+}
+
+.questions-per-page-picker {
+  padding: 10rpx;
+  border: 2rpx solid #ddd;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  background: white;
+}
+
+/* 问题列表 */
+.questions-list {
+  margin-bottom: 30rpx;
+}
+
+.question-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 25rpx;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2rpx solid #ddd;
+}
+
+.question-card:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 0 8rpx 16rpx rgba(0, 0, 0, 0.15);
+  border-color: #667eea;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.category-tag {
+  background: #f0f0f0;
+  color: #555;
+  padding: 8rpx 20rpx;
+  border-radius: 24rpx;
+  font-size: 20rpx;
+  font-weight: 500;
+}
+
+.difficulty-tag {
+  padding: 8rpx 20rpx;
+  border-radius: 24rpx;
+  font-size: 20rpx;
+  font-weight: 500;
+}
+
+.difficulty-1 {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.difficulty-2 {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.difficulty-3 {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.question-title {
+  font-size: 28rpx;
+  margin-bottom: 25rpx;
+  line-height: 1.4;
+  color: #333;
+}
+
+.view-details-btn {
+  background: #667eea;
+  color: white;
+  padding: 15rpx 30rpx;
+  border-radius: 8rpx;
+  text-align: center;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: 80rpx 0;
+  background: white;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.empty-state text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 分页控件 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30rpx;
+  margin-top: 30rpx;
+  padding: 25rpx;
+  background: white;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.pagination-btn {
+  padding: 15rpx 30rpx;
+  border: 2rpx solid #667eea;
+  border-radius: 8rpx;
+  background: white;
+  color: #667eea;
+  cursor: pointer;
+  font-size: 24rpx;
+  transition: all 0.3s ease;
+}
+
+.pagination-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #ddd;
+  color: #999;
+}
+
+.pagination-info {
+  font-size: 24rpx;
+  color: #555;
+  font-weight: 500;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .container {
+    padding: 15rpx;
+  }
+  
+  .filters {
+    padding: 20rpx;
+  }
+  
+  .question-card {
+    padding: 20rpx;
+  }
+  
+  .questions-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15rpx;
+  }
+  
+  .pagination {
+    flex-direction: column;
+    gap: 15rpx;
+  }
+}

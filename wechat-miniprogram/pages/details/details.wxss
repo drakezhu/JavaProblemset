@@ -1,0 +1,140 @@
+/* details.wxss */
+
+/* 全局样式 */
+.container {
+  padding: 30rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 加载和错误状态 */
+.loading,
+.error {
+  text-align: center;
+  padding: 100rpx 0;
+  font-size: 32rpx;
+}
+
+.error {
+  color: #e74c3c;
+}
+
+/* 问题详情 */
+.question-detail {
+  background: white;
+  border-radius: 16rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 头部标签 */
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.category-tag {
+  background: #f0f0f0;
+  color: #555;
+  padding: 15rpx 30rpx;
+  border-radius: 40rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.difficulty-tag {
+  padding: 15rpx 30rpx;
+  border-radius: 40rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.difficulty-1 {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.difficulty-2 {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.difficulty-3 {
+  background: #ffebee;
+  color: #c62828;
+}
+
+/* 问题内容 */
+.question-content {
+  margin-bottom: 50rpx;
+  padding-bottom: 30rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.question-title {
+  font-size: 32rpx;
+  line-height: 1.5;
+  color: #333;
+  font-weight: 500;
+}
+
+/* 答案内容 */
+.answer-section {
+  margin-bottom: 50rpx;
+}
+
+.answer-title {
+  display: block;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #555;
+  font-weight: 500;
+}
+
+.answer-content {
+  font-size: 26rpx;
+  line-height: 1.6;
+  color: #444;
+  white-space: pre-wrap;
+}
+
+/* 返回按钮 */
+.back-btn {
+  width: 100%;
+  padding: 20rpx;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  margin-top: 30rpx;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .container {
+    padding: 20rpx;
+  }
+  
+  .question-detail {
+    padding: 30rpx;
+  }
+  
+  .question-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .question-title {
+    font-size: 28rpx;
+  }
+  
+  .answer-content {
+    font-size: 24rpx;
+  }
+}
