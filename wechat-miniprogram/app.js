@@ -20,25 +20,21 @@ App({
   // 加载面试题数据
   loadQuestions() {
     try {
-      // 使用微信小程序的网络请求加载本地JSON文件
-      wx.request({
-        url: './questions.json',
-        method: 'GET',
+      // 使用微信小程序的文件系统管理器加载本地JSON文件
+      const fs = wx.getFileSystemManager();
+      fs.readFile({
+        filePath: 'questions.json',
+        encoding: 'utf-8',
         success: (res) => {
-          if (res.statusCode === 200) {
-            const questions = res.data;
-            // 转换id为字符串，确保类型一致
-            this.globalData.questions = questions.map(q => ({
-              ...q,
-              id: q.id.toString()
-            }));
-            // 提取所有类别
-            this.extractCategories();
-            console.log('面试题数据加载成功', this.globalData.questions.length, '条数据');
-          } else {
-            console.error('数据加载失败，状态码:', res.statusCode);
-            this.loadDefaultData();
-          }
+          const questions = JSON.parse(res.data);
+          // 转换id为字符串，确保类型一致
+          this.globalData.questions = questions.map(q => ({
+            ...q,
+            id: q.id.toString()
+          }));
+          // 提取所有类别
+          this.extractCategories();
+          console.log('面试题数据加载成功', this.globalData.questions.length, '条数据');
         },
         fail: (err) => {
           console.error('数据加载失败', err);
