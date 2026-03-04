@@ -1,7 +1,29 @@
 import { useState, useEffect } from 'react'
 import type { InterviewQuestion } from './types/InterviewQuestion'
 import { api } from './services/api'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import mermaid from 'mermaid'
 import './App.css'
+
+mermaid.initialize({ startOnLoad: false, theme: 'default' })
+
+function MermaidDiagram({ chart }: { chart: string }) {
+  const [svg, setSvg] = useState('')
+  
+  useEffect(() => {
+    const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`
+    mermaid.render(id, chart).then(({ svg }) => {
+      setSvg(svg)
+    }).catch((err) => {
+      console.error('Mermaid error:', err)
+    })
+  }, [chart])
+  
+  return <div className="mermaid-diagram" dangerouslySetInnerHTML={{ __html: svg }} />
+}
 
 function App() {
   const [questions, setQuestions] = useState<InterviewQuestion[]>([])
@@ -244,7 +266,36 @@ function App() {
               <h2>{selectedQuestion.question}</h2>
               <div className="answer-section">
                 <h3>Answer:</h3>
-                <p className="answer">{selectedQuestion.answer}</p>
+                <div className="answer markdown-body">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                      code({ className, children, ...props }) {
+                        const match = /language-(\w+)/.exec(className || '')
+                        const isInline = !match
+                        if (!isInline && match && match[1] === 'mermaid') {
+                          return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />
+                        }
+                        return isInline ? (
+                          <code className={className} {...props}>{children}</code>
+                        ) : (
+                          <SyntaxHighlighter
+                            style={vscDarkPlus}
+                            language={match ? match[1] : 'text'}
+                            PreTag="div"
+                          >
+                            {String(children).replace(/\n$/, '')}
+                          </SyntaxHighlighter>
+                        )
+                      },
+                      table({ children }) {
+                        return <table className="markdown-table">{children}</table>
+                      }
+                    }}
+                  >
+                    {selectedQuestion.answer}
+                  </ReactMarkdown>
+                </div>
               </div>
             </div>
           </div>

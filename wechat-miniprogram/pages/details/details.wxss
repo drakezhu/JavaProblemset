@@ -138,3 +138,120 @@
     font-size: 24rpx;
   }
 }
+
+/* ===== Markdown渲染样式 ===== */
+
+/* 标题 */
+.answer-heading {
+  font-weight: 600;
+  margin: 30rpx 0 20rpx 0;
+  color: #333;
+}
+
+.answer-heading.level-1 {
+  font-size: 36rpx;
+}
+
+.answer-heading.level-2 {
+  font-size: 32rpx;
+}
+
+.answer-heading.level-3 {
+  font-size: 30rpx;
+}
+
+.answer-heading.level-4,
+.answer-heading.level-5,
+.answer-heading.level-6 {
+  font-size: 28rpx;
+}
+
+/* 段落 */
+.answer-paragraph {
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 16rpx;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* 列表 */
+.answer-list {
+  margin: 16rpx 0;
+}
+
+.list-item {
+  display: flex;
+  align-items: flex-start;
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 12rpx;
+}
+
+.list-bullet {
+  color: #667eea;
+  margin-right: 12rpx;
+  flex-shrink: 0;
+}
+
+.list-content {
+  flex: 1;
+}
+
+/* 表格 */
+.answer-table {
+  margin: 20rpx 0;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.table-row {
+  display: flex;
+  border-bottom: 1rpx solid #e0e0e0;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-header {
+  background: #f5f5f5;
+}
+
+.table-header .table-cell {
+  font-weight: 600;
+  color: #333;
+}
+
+.table-cell {
+  flex: 1;
+  padding: 16rpx;
+  font-size: 22rpx;
+  color: #444;
+  text-align: left;
+  border-right: 1rpx solid #e0e0e0;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.table-cell:last-child {
+  border-right: none;
+}
+
+/* 代码块 */
+.answer-code {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 24rpx;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+  line-height: 1.6;
+  font-family: 'Courier New', monospace;
+  margin: 16rpx 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}

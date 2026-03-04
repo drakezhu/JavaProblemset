@@ -27,10 +27,48 @@
         <text class="question-title">{{question.question}}</text>
       </view>
       
-      <!-- 答案内容 -->
+      <!-- 答案内容 - 支持Markdown解析 -->
       <view class="answer-section">
         <text class="answer-title">答案：</text>
-        <text class="answer-content">{{question.answer}}</text>
+        
+        <block wx:for="{{parsedAnswer}}" wx:key="index">
+          <!-- 标题 -->
+          <view wx:if="{{item.type === 'heading'}}" class="answer-heading level-{{item.level}}">
+            {{item.content}}
+          </view>
+          
+          <!-- 段落 -->
+          <view wx:elif="{{item.type === 'paragraph'}}" class="answer-paragraph">
+            <text>{{item.content}}</text>
+          </view>
+          
+          <!-- 列表 -->
+          <view wx:elif="{{item.type === 'list'}}" class="answer-list">
+            <view wx:for="{{item.items}}" wx:for-item="listItem" wx:key="index" class="list-item">
+              <text class="list-bullet">• </text>
+              <text class="list-content">{{listItem}}</text>
+            </view>
+          </view>
+          
+          <!-- 表格 -->
+          <view wx:elif="{{item.type === 'table'}}" class="answer-table">
+            <view class="table-row table-header">
+              <view wx:for="{{item.headers}}" wx:key="index" class="table-cell">
+                <text>{{item}}</text>
+              </view>
+            </view>
+            <view wx:for="{{item.rows}}" wx:for-item="row" wx:key="index" class="table-row">
+              <view wx:for="{{row}}" wx:for-item="cell" wx:key="index" class="table-cell">
+                <text>{{cell}}</text>
+              </view>
+            </view>
+          </view>
+          
+          <!-- 代码块 -->
+          <view wx:elif="{{item.type === 'code'}}" class="answer-code">
+            <text>{{item.content}}</text>
+          </view>
+        </block>
       </view>
       
       <!-- 返回按钮 -->
