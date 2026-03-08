@@ -19,11 +19,16 @@ App({
   
   loadQuestions() {
     try {
+      console.log('开始加载面试题数据');
+      console.log('原始数据长度:', questionsData.length);
       this.globalData.questions = questionsData.map(q => ({
         ...q,
         id: q.id.toString()
       }));
+      console.log('处理后数据长度:', this.globalData.questions.length);
       this.extractCategories();
+      console.log('提取的类别:', this.globalData.categories);
+      console.log('Kafka类别是否存在:', this.globalData.categories.includes('Kafka'));
       console.log('面试题数据加载成功', this.globalData.questions.length, '条数据');
     } catch (err) {
       console.error('数据加载失败', err);

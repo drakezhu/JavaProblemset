@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import type { InterviewQuestion } from './types/InterviewQuestion'
 import { api } from './services/api'
+import { getDifficultyLabel } from './utils/constants'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
@@ -125,19 +126,6 @@ function App() {
 
   const handleCloseDetail = () => {
     setSelectedQuestion(null)
-  }
-
-  const getDifficultyLabel = (difficulty: number): string => {
-    switch (difficulty) {
-      case 1:
-        return 'Easy'
-      case 2:
-        return 'Medium'
-      case 3:
-        return 'Hard'
-      default:
-        return 'Unknown'
-    }
   }
 
   return (
